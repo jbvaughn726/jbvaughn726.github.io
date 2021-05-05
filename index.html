@@ -133,26 +133,103 @@
 							<p>I would love to contribute to any and everything that I can. In addition to seeking part time work, I am also interested in any programming work to learn languages that are newer to me. If you are interested in my work, please contact me below.</p>
 							<div class="split style1">
 								<section>
-									<form method="post" action="mailer.php" enctype="multipart/form-data">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" required/>
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" required/>
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5" required></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a button type="submit"  value="Submit" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
+									<form action="/mail_form.php" method="post" id="contact-form">
+										<h2>Contact us</h2>
+									
+										<?php echo((!empty($errorMessage)) ? $errorMessage : '') ?>
+										<p>
+										  <label>First Name:</label>
+										  <input name="name" type="text" value="dima"/>
+										</p>
+										<p>
+										  <label>Email Address:</label>
+										  <input style="cursor: pointer;" name="email" value="dima@dima.com" type="text"/>
+										</p>
+										<p>
+										  <label>Message:</label>
+										  <textarea name="message">dima</textarea>
+										</p>
+									
+										<p>
+											<input type="submit" value="Send"/>
+    </p>
+  </form>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+  <script>
+      const constraints = {
+          name: {
+              presence: { allowEmpty: false }
+          },
+          email: {
+              presence: { allowEmpty: false },
+              email: true
+          },
+          message: {
+              presence: { allowEmpty: false }
+          }
+      };
+
+      const form = document.getElementById('contact-form');
+
+      form.addEventListener('submit', function (event) {
+          const formValues = {
+              name: form.elements.name.value,
+              email: form.elements.email.value,
+			  message: form.elements.message.value
+          };
+
+          const errors = validate(formValues, constraints);
+
+          if (errors) {
+              event.preventDefault();
+              const errorMessage = Object
+                  .values(errors)
+                  .map(function (fieldValues) {
+                      return fieldValues.join(', ')
+                  })
+                  .join("\n");
+
+              alert(errorMessage);
+          }
+      }, false);
+  </script>
 								</section>
+								<script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+								<script>
+									const constraints = {
+										name: {
+											presence: { allowEmpty: false }
+										},
+										email: {
+											presence: { allowEmpty: false },
+											email: true
+										},
+										message: {
+											presence: { allowEmpty: false }
+										}
+									};
+								 
+									const form = document.getElementById('contact-form');
+								 
+									form.addEventListener('submit', function (event) {
+									  const formValues = {
+										  name: form.elements.name.value,
+										  email: form.elements.email.value,
+										  message: form.elements.message.value
+									  };
+									  const errors = validate(formValues, constraints);
+
+     if (errors) {
+       event.preventDefault();
+       const errorMessage = Object
+           .values(errors)
+           .map(function (fieldValues) { return fieldValues.join(', ')})
+           .join("\n");
+
+       alert(errorMessage);
+     }
+   }, false);
+</script>
 								<section>
 									<ul class="contact">
 										<li>
