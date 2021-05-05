@@ -1,5 +1,4 @@
 <?php
-
 $errors = [];
 
 if (!empty($_POST)) {
