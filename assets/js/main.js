@@ -1,5 +1,5 @@
 /**
-* Template Name: Folio - v4.1.0
+* Template Name: Folio - v4.4.0
 * Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
